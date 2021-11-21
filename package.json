@@ -1,0 +1,25 @@
+{
+  "name": "map675-assignment-03-jmfr236",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmfr236/map675-assignment-03-jmfr236.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmfr236/map675-assignment-03-jmfr236/issues"
+  },
+  "homepage": "https://github.com/jmfr236/map675-assignment-03-jmfr236#readme",
+  "dependencies": {
+    "@turf/turf": "^6.5.0",
+    "chalk": "^4.1.2",
+    "csvtojson": "^2.0.10",
+    "geojson-validation": "^1.0.2"
+  }
+}
