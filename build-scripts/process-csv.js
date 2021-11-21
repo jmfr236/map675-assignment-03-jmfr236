@@ -3,7 +3,7 @@ const csv = require("csvtojson");
 const chalk = require("chalk");
 const gjv = require("geojson-validation");
 
-const inFilePath = __dirname + "/../project-files/CO_Features_20210825.txt";
+const inFilePath = __dirname + "/../project-files/NationalFile_20210825.txt";
 const outFilePath = __dirname + "/../data/co-churches.json";
 const filteredFeature = "Church";
 
