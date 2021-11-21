@@ -25,7 +25,7 @@ function createHexGrid(churches) {
   const bbox = [-125, 23, -65, 50];
 
   // define our cell Diameter
-  const cellSide = 0.5;
+  const cellSide = 1;
   // define units
   const options = {
     units: "degrees"

@@ -31,6 +31,7 @@
 
     <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.0.6/chroma.min.js"></script>
     <script>
       // create Leaflet map, centered on Texas
       var map = L.map("map", {
@@ -50,19 +51,39 @@
       ).addTo(map);
 
       // request our js file
+      // const counts = d3.json('data/us-churches.json');
       d3.json("data/us-hexgrid.json").then(function(data) {
+          // loop through all the hex features and push counts to an array
+            const counts = [];
+
+          // loop through the feature data
+          data.features.forEach(function(feature) {
+            if (feature.properties.count > 0) {
+              counts.push(feature.properties.count);
+            }
+          });
         drawMap(data, counts);
       });
 
-      function drawMap(data) {
+      function drawMap(data, counts) {
         // map options
+            // use chroma.limits to determine
+        const breaks = chroma.limits(counts, 'k', 9);
+
+        // build a colorize function
+        const colorize = chroma
+                        .scale('OrRd')
+                        .domain(breaks)
+                        .mode('lch')
+                        .correctLightness();
+
         var options = {
           // style the hexagons
           style: function(feature, layer) {
             return {
               color: "white",
               weight: 2,
-              fillColor: "steelblue",
+              fillColor: colorize(feature.properties.count),
               fillOpacity: 1
             };
           },
