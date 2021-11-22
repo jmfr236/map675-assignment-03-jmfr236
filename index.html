@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>Module 03 Churches Hexgrid</title>
+    <title>Church Patterns in US</title>
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -23,11 +23,27 @@
         top: 0;
         bottom: 0;
       }
+
+      #ui {
+        position: absolute;
+        z-index: 1000; /* place above map */
+        bottom: 18px;
+        right: 18px;
+        padding: 6px 12px;
+        background: rgba(256,256,256,.9);
+      }
     </style>
   </head>
 
   <body>
     <div id="map"></div>
+
+    <div id="ui">
+      <h3>Church Prevalence</h3>
+      <h4>(number of churches)</h4>
+      <li>Data Source: <a href="https://www.usgs.gov/core-science-systems/ngp/board-on-geographic-names/download-gnis-data">GNIS Data</a></li>
+      <ul id="legend-list"></ul>
+    </div>
 
     <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
@@ -84,7 +100,7 @@
               color: "white",
               weight: 2,
               fillColor: colorize(feature.properties.count),
-              fillOpacity: 1
+              fillOpacity: .75
             };
           },
           onEachFeature: function(feature, layer) {
